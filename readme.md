@@ -21,4 +21,16 @@
 
 ## Challenge #1
 ---
-    -
+    - When you head over to localhost:3000, it will render the home view and you will have an h1 that displays "Home"
+
+    ```
+    app.get("/", function(req, res){
+    res.render("home");
+    });
+    ```
+
+    - Needed res
+
+## Challenge #2
+---
+    - In App.js we have 3 content constants, we need you to get the homeStartingContent to be rendered ont he home.ejs page went "/" route is accessed.
