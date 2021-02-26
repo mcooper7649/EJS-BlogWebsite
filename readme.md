@@ -34,3 +34,47 @@
 ## Challenge #2
 ---
     - In App.js we have 3 content constants, we need you to get the homeStartingContent to be rendered ont he home.ejs page went "/" route is accessed.
+
+    app.js
+    ```
+    app.get("/", function(req, res){
+        res.render("home", {
+            homeContent: homeStartingContent
+        });
+    });
+    ```
+
+    home.ejs
+    ```
+    <h1>Home</h1>
+    <p> <%= homeContent %> </p>
+    ```
+## Challenge #3
+    ---
+
+    - Our Footer and Header already have some code including bootstrap, css folder, navbar, and footer information.
+
+    - Use EJS Partials, to add header and footer to existing Home page
+
+    home.ejs | How I added partials
+    ```
+    <%- include("header") -%>
+
+    <h1>Home</h1>
+    <p> <%= homeContent %> </p>
+
+    <%- include("footer") -%>
+    
+    ```
+
+## Challenge #4
+    ---
+
+    - Create a new folder inside the views folder called "partials"
+    - Move your footer and header to partials folder
+    - Update Code in home file
+    `` <%- include("partials/footer") -%> ``
+
+## Challenge #5
+    - Add About and Contact Page to be rendered using our partials and add content for each page like we did the home page
+    
