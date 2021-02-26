@@ -76,5 +76,64 @@
     `` <%- include("partials/footer") -%> ``
 
 ## Challenge #5
+---
     - Add About and Contact Page to be rendered using our partials and add content for each page like we did the home page
+
+    - Solution | Copied configuration from app.js get route and updated view, and json object with correct vars. Then I updated Header Partial as it had links that didn't match correct view/route
+
+## Challenge #6
+---
+
+    - This challenge was changing the navbar. Did it in previous challenge.
+
+## Challenge #7
+---
+    - Setup localhost:3000/compose to render
+    - Add Partials
+    - Add h1 that says "Compose"
+    - Add text input and button that says "Publish"
     
+
+    compose.ejs
+    ```
+    <%- include("partials/header") -%>
+
+
+    <h1>Compose</h1>
+    <input type="text" name="compose" id="">
+    <button type="submit">Publish</button>
+
+    <%- include("partials/footer") -%>
+    ```
+    
+    app.js
+    ```
+    app.get("/compose", function(req, res){
+    res.render("compose");
+    });
+    ```
+
+## Challenge #8
+---
+    - Setup the text input so if someone hits publish the content is logged to the console.
+
+    - Solution was create a post route on the app.js and console the req.body.composeItem
+
+    - Side note | app.use(bodyParser.urlencoded({extended: true}));   This needed to be after app const but not at the end of the file to for bodyParser to be used.
+
+    app.js
+    ```
+    app.post("/compose", function(req, res){
+    console.log(req.body.composeItem);
+    });
+    ```
+
+    compose.ejs
+    ```
+    <form action="/compose" method="post">
+    <input type="text" name="composeItem" placeholder="New Item" autocomplete="off">
+    <button type="submit">Publish</button>
+    </form>
+    ```
+
+
