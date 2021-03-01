@@ -137,3 +137,95 @@
     ```
 
 
+## Challenge #9
+---
+
+- We are going to add a Title Input and Post Input to our compose page.
+- Add bootstrap to both input boxes, Title is single-line while post is multi-line
+- Publish Button needs to be Blue and Match the example
+- A Label for each input field
+
+
+## Challenge #10
+---
+
+- On the app.post route, we need to create an object to pass both the title and body of the post
+
+```
+app.post("/compose", function(req, res){
+ const post = {
+   title: req.body.composeItemTitle,
+   content: req.body.compostItemPost
+ }
+});
+```
+
+## Challenge #11
+---
+
+- Create a global variable array called "posts" and store the post we created there.
+
+- Redirect to the home page and console the posts array and you should see your array
+
+## Challenge #12
+---
+
+1. Delete all console.logs we have in the app except app.listen
+
+2. log our posts array from the home.ejs file
+
+
+## Challenge #13
+---
+
+3. Make our blog log just the titles of each item in our posts array.
+
+4. Create a for loop that console logs every title in the arary. 
+
+
+## Challenge #14
+---
+
+1. Instead of using a basic forloop, lets use a much easier way to loop, the forEach();
+
+2. Add the forEach loop to replace your traditional for loop. 
+
+forEach loop with EJS added
+
+```
+<% posts.forEach(post => { %>
+    <%  console.log(post.title) %>
+    <% }); %>
+```
+
+## Challenge #15
+---
+
+1. Using loremipsum.io create 3 posts but have them rendered instead of logged on our home.ejs page.
+
+```
+
+   <% posts.forEach(post => { %>
+        <h1><%= post.title %></h1> 
+       <p> <%= post.content  %></p>
+         <% }); %>
+
+```
+
+##  Express Routing Parameters
+---
+
+1. Using Express Routing I want to be able to type localhost:3000/posts/randomname, I want nothing to happen on the page but I want to see the randomname logged. 
+
+
+```
+
+app.get("/posts/:postTitle", function(req, res){
+  console.log(req.params)
+  });
+
+```
+
+
+## Challenge #16
+---

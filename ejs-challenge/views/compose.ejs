@@ -3,8 +3,11 @@
 
 <h1>Compose</h1>
 <form action="/compose" method="post">
-    <input type="text" name="composeItem" placeholder="New Item" autocomplete="off">
-    <button type="submit">Publish</button>
+    <label class="form-label" for="composeItemTitle"><h4>Title</h4></label>
+        <input type="text" class="form-control" name="composeItemTitle"  autocomplete="off">
+    <label  class="form-label" for="composeItemPost"><h4>Post</h4></label>
+        <textarea type="text" class="form-control" name="composeItemPost"  autocomplete="off" row="5" cols="30"></textarea>
+    <button type="submit" id="publish-btn" class="btn btn-primary">Publish</button>
 </form>
 
 <%- include("partials/footer") -%>
