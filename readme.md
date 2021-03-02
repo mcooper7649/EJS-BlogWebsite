@@ -229,3 +229,110 @@ app.get("/posts/:postTitle", function(req, res){
 
 ## Challenge #16
 ---
+
+rs in server console to restart nodemon to reset our arrays.
+
+1. Create a new single blog post using loren ipsum.
+
+2. I want to be able to type localhost:3000/post/titleOfTestPost  then I want "Match found" return from the server console.
+
+
+
+## Challenge #17
+---
+3. We need to compare the req.params to our post.Titles and if it does, return "Match Found" from the server.
+
+
+
+## Challenge #18
+---
+
+1. log "Not a Match" if not match found.
+
+2. Lets add the utility library lo-dash | lodash.com
+
+3. Read the documentation and implement the documentation.
+
+4. Turn all strings into lowercase, it will also ignore hyphens and underscores.
+
+5. I want "Another-Post" url to return "Match found" when we search for a compose we made with the Title "Another Post"
+
+## Why Lodash?
+---
+
+[lodash](lodash.com)
+
+Lodash makes JavaScript easier by taking the hassle out of working with arrays, numbers, objects, strings, etc.
+Lodash’s modular methods are great for:
+
+Iterating arrays, objects, & strings
+Manipulating & testing values
+Creating composite functions
+
+```
+npm i lodash
+var _ = require('lodash');
+
+_.lowerFirst() //add to posts app.get
+
+```
+
+
+## Challenge #19
+---
+
+1. Instead of logging "Match Found" lets render the actual page.
+
+2. EveryPage we create should load if found. Just with that blank post information. Using just Express routing parameters and ejs.
+
+app.js
+```
+
+app.get("/posts/:postTitle", function(req, res){
+  const requestedTitle = req.params.postTitle;
+  posts.forEach(post => {
+    const storedTitle = post.title;
+    if (_.lowerCase(storedTitle) === _.lowerCase(requestedTitle)){
+      console.log("Match Found!")
+      res.render("post",{
+        title: post.title,
+        content: post.content
+
+      })
+    }
+  });
+});
+
+```
+
+post.ejs
+
+```
+
+<%- include("partials/header") -%>
+
+<h1><%= title %></h1> 
+<p> <%= content  %></p>
+
+<%- include("partials/footer") -%>
+```
+
+## Challenge #20
+---
+
+We want our homepage to automatically truncate the amount of characters that a post displays for the blog body. 
+
+1. 100 Character Limit
+
+[HowToTruncateString](https://stackoverflow.com/questions/1301512/truncate-a-string-straight-javascript)
+
+
+```
+
+ <% posts.forEach(post => { %>
+        <%  var length = 100; %>
+        <%  var myTruncatedString = post.content.substring(0, length); %>
+        <h1><%= post.title %></h1> 
+       <p> <%= myTruncatedString  %></p>
+         <% }); %>
+```
