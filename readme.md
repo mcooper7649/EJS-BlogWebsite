@@ -336,3 +336,19 @@ We want our homepage to automatically truncate the amount of characters that a p
        <p> <%= myTruncatedString  %></p>
          <% }); %>
 ```
+
+
+
+## Challenge #21
+---
+
+We the home Page to have ... dots after the truncation on the Home page and also a link that says "Read More" that when clicked will take you to the page.
+
+```
+        <p> 
+           <%= myTruncatedString  %>
+           <a href="/posts/<%= post.title %>">
+               Read More
+           </a>
+        </p>
+```

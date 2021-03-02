@@ -7,9 +7,15 @@
 
     <% posts.forEach(post => { %>
         <%  var length = 100; %>
-        <%  var myTruncatedString = post.content.substring(0, length); %>
+        <%  var myTruncatedString = post.content.substring(0, length) + "..."; %>
         <h1><%= post.title %></h1> 
-       <p> <%= myTruncatedString  %></p>
+       <p> 
+           <%= myTruncatedString  %>
+           <a href="/posts/<%= post.title %>">
+               Read More
+           </a>
+        </p>
+       
          <% }); %>
 
     
