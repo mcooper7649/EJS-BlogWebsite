@@ -352,3 +352,98 @@ We the home Page to have ... dots after the truncation on the Home page and also
            </a>
         </p>
 ```
+
+
+## Connecting a DB to our BLOG
+---
+
+### Step 1 - Save Composed Posts with MongoDB
+---
+
+Goal: You should be able to go to the compose page and add a new post which will be added to your database as a new document.
+
+Verify by going into the mongo shell and find all posts.
+
+You need to install mongoose and require it in your app.js
+
+You’ll need to connect to a new database called blogDB
+
+
+
+mongoose.connect("mongodb://localhost:27017/blogDB", {useNewUrlParser: true});
+
+
+
+You’ll need to create a new postSchema that contains a title and content.
+
+
+
+const postSchema = {
+
+ title: String,
+
+ content: String
+
+};
+
+
+
+You’ll need to create a new mongoose model using the schema to define your posts collection.
+
+
+
+const Post = mongoose.model("Post", postSchema);
+
+
+
+
+
+Inside the app.post() method for your /compose route, you’ll need to create a new post document using your mongoose model.
+
+
+
+ const post = new Post ({
+
+   title: req.body.postTitle,
+
+   content: req.body.postBody
+
+ });
+
+
+
+You’ll need to save the document to your database instead of pushing to the posts array.
+
+
+
+post.save()
+
+### Step 2 - Get the Home Page to Render the Posts
+---
+
+Goal: When you go to localhost:3000 you should see the posts you created in the compose page.
+
+You’ll need to delete the existing posts array.
+
+
+
+let posts = [];
+
+
+
+You’ll need to find all the posts in the posts collection and render that in the home.ejs file.
+
+
+
+Post.find({}, function(err, posts){
+
+   res.render("home", {
+
+     startingContent: homeStartingContent,
+
+     posts: posts
+
+     });
+
+ })
+
